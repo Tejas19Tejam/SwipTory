@@ -1,0 +1,26 @@
+import styled, { css } from "styled-components";
+
+const Row = styled.div`
+  display: flex;
+  max-width: 100%;
+
+  ${(props) =>
+    props.type === "horizontal" &&
+    css`
+      justify-content: space-between;
+      align-items: center;
+    `}
+
+  ${(props) =>
+    props.type === "vertical" &&
+    css`
+      flex-direction: column;
+      gap: 1.8rem;
+    `}
+`;
+
+Row.defaultProps = {
+  type: "vertical",
+};
+
+export default Row;

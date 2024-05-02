@@ -1,0 +1,182 @@
+[
+  {
+    "slides": [
+      {
+        "imageUrl": "slide1.jpg",
+        "title": "Introduction",
+        "caption": "Welcome to our story!"
+      },
+      {
+        "imageUrl": "slide2.jpg",
+        "title": "Main Event",
+        "caption": "Here's the main part of the story."
+      }
+    ],
+    "category": "Travel",
+    "likesCount": 20,
+    "author": "6156f75a5c070c4dabc1d09a",
+    "createdAt": "2023-09-20T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide3.jpg",
+        "title": "Healthy Habits",
+        "caption": "Tips for staying healthy."
+      },
+      {
+        "imageUrl": "slide4.jpg",
+        "title": "Exercise",
+        "caption": "The importance of regular exercise."
+      }
+    ],
+    "category": "Health and Fitness",
+    "likesCount": 15,
+    "author": "6156f75a5c070c4dabc1d09b",
+    "createdAt": "2023-08-15T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide5.jpg",
+        "title": "Exploring Nature",
+        "caption": "Enjoying the beauty of nature."
+      },
+      {
+        "imageUrl": "slide6.jpg",
+        "title": "Hiking Adventure",
+        "caption": "An exciting hike through the mountains."
+      }
+    ],
+    "category": "Travel",
+    "likesCount": 30,
+    "author": "6156f75a5c070c4dabc1d09c",
+    "createdAt": "2023-07-10T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide7.jpg",
+        "title": "Healthy Eating",
+        "caption": "Nutritious meals for a balanced diet."
+      },
+      {
+        "imageUrl": "slide8.jpg",
+        "title": "Meal Prep",
+        "caption": "Preparing healthy meals in advance."
+      }
+    ],
+    "category": "Health and Fitness",
+    "likesCount": 25,
+    "author": "6156f75a5c070c4dabc1d09d",
+    "createdAt": "2023-06-05T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide9.jpg",
+        "title": "City Tour",
+        "caption": "Exploring the streets of the city."
+      },
+      {
+        "imageUrl": "slide10.jpg",
+        "title": "Local Cuisine",
+        "caption": "Sampling delicious local dishes."
+      }
+    ],
+    "category": "Travel",
+    "likesCount": 18,
+    "author": "6156f75a5c070c4dabc1d09e",
+    "createdAt": "2023-05-01T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide11.jpg",
+        "title": "Yoga Practice",
+        "caption": "Finding inner peace through yoga."
+      },
+      {
+        "imageUrl": "slide12.jpg",
+        "title": "Meditation",
+        "caption": "Clearing the mind and relaxing the body."
+      }
+    ],
+    "category": "Health and Fitness",
+    "likesCount": 12,
+    "author": "6156f75a5c070c4dabc1d09f",
+    "createdAt": "2023-04-15T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide13.jpg",
+        "title": "Beach Day",
+        "caption": "Fun in the sun at the beach."
+      },
+      {
+        "imageUrl": "slide14.jpg",
+        "title": "Swimming",
+        "caption": "Taking a refreshing dip in the ocean."
+      }
+    ],
+    "category": "Travel",
+    "likesCount": 22,
+    "author": "6156f75a5c070c4dabc1d091",
+    "createdAt": "2023-03-20T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide15.jpg",
+        "title": "Workout Routine",
+        "caption": "Building strength and endurance."
+      },
+      {
+        "imageUrl": "slide16.jpg",
+        "title": "Cardio Session",
+        "caption": "Getting the heart rate up with cardio exercises."
+      }
+    ],
+    "category": "Health and Fitness",
+    "likesCount": 17,
+    "author": "6156f75a5c070c4dabc1d092",
+    "createdAt": "2023-02-10T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide17.jpg",
+        "title": "Sightseeing Tour",
+        "caption": "Visiting famous landmarks and attractions."
+      },
+      {
+        "imageUrl": "slide18.jpg",
+        "title": "Cultural Experience",
+        "caption": "Immersing in the local culture and traditions."
+      }
+    ],
+    "category": "Travel",
+    "likesCount": 28,
+    "author": "6156f75a5c070c4dabc1d093",
+    "createdAt": "2023-01-05T00:00:00.000Z"
+  },
+  {
+    "slides": [
+      {
+        "imageUrl": "slide19.jpg",
+        "title": "Healthy Snacks",
+        "caption": "Delicious and nutritious snack ideas."
+      },
+      {
+        "imageUrl": "slide20.jpg",
+        "title": "Nutrition Tips",
+        "caption": "Tips for maintaining a healthy diet."
+      }
+    ],
+    "category": "Health and Fitness",
+    "likesCount": 14,
+    "author": "6156f75a5c070c4dabc1d094",
+    "createdAt": "2022-12-01T00:00:00.000Z"
+  }
+]
