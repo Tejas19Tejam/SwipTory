@@ -19,8 +19,8 @@ const Error = styled.span`
 // import { useLogin } from "./useLogin";
 function LoginForm({ onCloseModel }) {
   const { login, isLoading, error } = useLogin();
-  const [username, setUsername] = useState("Vasudev tejam");
-  const [password, setPassword] = useState("password111");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   function handleSubmit(e) {

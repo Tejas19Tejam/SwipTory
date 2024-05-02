@@ -4,7 +4,7 @@ import { apiRequest } from "./apiRequest";
 export async function signup({ username, password }) {
   try {
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/api/v1/users/signup",
+      `${import.meta.env.VITE_API_DOMAIN}/api/v1/users/signup`,
       {
         username,
         password,
@@ -22,7 +22,7 @@ export async function signup({ username, password }) {
 export async function login({ username, password }) {
   try {
     const { data } = await axios.post(
-      "http://127.0.0.1:8000/api/v1/users/login",
+      `${import.meta.env.VITE_API_DOMAIN}/api/v1/users/login`,
       {
         username,
         password,
@@ -39,7 +39,7 @@ export async function login({ username, password }) {
 export async function logout() {
   try {
     const { data } = await axios.get(
-      "http://127.0.0.1:8000/api/v1/users/logout"
+      `${import.meta.env.VITE_API_DOMAIN}/api/v1/users/logout`
     );
     return data.data;
   } catch (error) {
@@ -53,7 +53,7 @@ export async function getCurrentUser() {
   try {
     const { user } = await apiRequest({
       method: "get",
-      url: `http://127.0.0.1:8000/api/v1/users/verify`,
+      url: `${import.meta.env.VITE_API_DOMAIN}/api/v1/users/verify`,
     });
 
     return user;
