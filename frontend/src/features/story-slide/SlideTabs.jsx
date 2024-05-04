@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import styled, { css } from "styled-components";
 import Row from "../../ui/Row";
 import ButtonCloseIcon from "../../ui/ButtonCloseIcon";
@@ -66,16 +67,14 @@ const ButtonClose = styled(ButtonCloseIcon)`
 `;
 
 import { MAX_SLIDE_COUNT } from "../../utils/constants";
+import { useSlide } from "./useSlide";
 
 // import { useEffect, useState } from "react";
 
-function SlideTabs({
-  slides,
-  activeSlideIndex,
-  onSlideClick,
-  onRemoveSlide,
-  onAddSlide,
-}) {
+function SlideTabs() {
+  const { addNewSlide, slides, removeSlide, setActiveSlide, activeSlideIndex } =
+    useSlide();
+
   return (
     <>
       <StyledSlideTabs type="horizontal">
@@ -85,13 +84,13 @@ function SlideTabs({
           return (
             <Tab
               key={slide.id}
-              onClick={() => onSlideClick(index)}
+              onClick={() => setActiveSlide(index)}
               className={activeSlideIndex === index ? "active" : ""}
               active={activeSlideIndex === index}
             >
               <span>Slide {index + 1}</span>
               {index >= 3 && ( // Render close button for all tabs greater than four
-                <ButtonClose onClick={() => onRemoveSlide(slide.id)}>
+                <ButtonClose onClickCapture={() => removeSlide(index)}>
                   <RxCross2 />
                 </ButtonClose>
               )}
@@ -99,7 +98,7 @@ function SlideTabs({
           );
         })}
         {slides.length < MAX_SLIDE_COUNT && (
-          <Tab onClick={onAddSlide}>
+          <Tab onClick={addNewSlide}>
             <span>Add +</span>
           </Tab>
         )}

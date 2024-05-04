@@ -6,19 +6,19 @@ const storySchema = new mongoose.Schema(
     slides: {
       type: [
         {
-          coverImage: {
+          image: {
             type: String,
             required: true,
             default: "default-image.jpg",
           },
-          title: {
+          heading: {
             type: String,
             required: true,
             trim: true,
             maxLength: [30, "The title must be less or equal to 10 characters"],
             minLength: [0, "The title must be more or equal to 10 characters"],
           },
-          caption: {
+          description: {
             type: String,
             required: true,
             trim: true,

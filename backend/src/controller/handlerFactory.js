@@ -47,6 +47,8 @@ exports.updateOne = (Model) =>
 /** Factory Function to Create new  document of given Model */
 exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
+    // Add the author field to the request body
+    req.body.author = req.user.id;
     // Modern way of creating Documents
     // This will  return a promise with new document as data argument
     const newDoc = await Model.create(req.body);

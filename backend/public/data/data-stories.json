@@ -2,9 +2,9 @@
   {
     "slides": [
       {
-        "imageUrl": "slide1.jpg",
-        "title": "Introduction",
-        "caption": "Welcome to our story!"
+        "image": "slide1.jpg",
+        "heading": "Introduction",
+        "description": "Welcome to our story!"
       },
       {
         "imageUrl": "slide2.jpg",

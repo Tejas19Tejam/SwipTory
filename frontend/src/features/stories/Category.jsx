@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import Row from "../../ui/Row";
+import React from "react";
+import { useSearchParams } from "react-router-dom";
 import Heading from "../../ui/Heading";
-import ErrorFallback from "../../ui/ErrorFallback";
+import Spinner from "../../ui/Spinner";
+import Empty from "../../ui/Empty";
 import StoriesRow from "./StoriesRow";
-import React, { useEffect } from "react";
+
+import { useStories } from "./useStories";
 
 const StyledCategory = styled(Row)`
   display: flex;
@@ -18,52 +22,28 @@ const StyledCategory = styled(Row)`
     margin-top: 1.8rem;
   }
 `;
-
-const categories = [
-  "food",
-  "health and Fitness",
-  "travel",
-  "movie",
-  "education",
-];
-
-import { useStories } from "./useStories";
-import Spinner from "../../ui/Spinner";
-import Empty from "../../ui/Empty";
-import { useSearchParams } from "react-router-dom";
-
 function Category() {
   const { stories, isLoading, error } = useStories();
 
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("category");
-
   if (isLoading) return <Spinner />;
-  if (error) return <ErrorFallback error={error} />;
+  if (error) return <div>Error: {error.message}</div>;
 
   const categories = [...new Set(stories.map((story) => story.category))]; // Extract unique categories from stories
 
-  // Get filtered stories by category
-  const filteredStories = categories.map((category) => {
-    const categoryStories = stories.filter(
-      (story) => story.category === category
-    );
-    return { category, stories: categoryStories };
-  });
-
-  if (!categories.includes(category) && filteredStories.length === 0)
-    return <Empty category={category} />;
-
-  return filteredStories.map((story) => {
-    return (
-      <React.Fragment key={story.category}>
-        <StyledCategory>
-          <Heading as="h1">Top Stories About {story.category}</Heading>
-          <StoriesRow stories={story.stories} />
-        </StyledCategory>
-      </React.Fragment>
-    );
-  });
+  return (
+    <>
+      {categories.map((category) => (
+        <React.Fragment key={category}>
+          <StyledCategory>
+            <Heading as="h1">Top Stories About {category}</Heading>
+            <StoriesRow
+              stories={stories.filter((story) => story.category === category)}
+            />
+          </StyledCategory>
+        </React.Fragment>
+      ))}
+    </>
+  );
 }
 
 export default Category;

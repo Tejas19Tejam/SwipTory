@@ -48,12 +48,12 @@ const Description = styled.p`
 `;
 
 function StorySlide({ slide }) {
-  const { coverImage: imageUrl, title, caption } = slide || {};
+  const { image: imageUrl, heading, description } = slide || {};
 
   return (
     <StyledSlide img="/cover-image.webp">
-      <StoryTitle as="h2">{title}</StoryTitle>
-      <Description>{caption}</Description>
+      <StoryTitle as="h2">{heading}</StoryTitle>
+      <Description>{description}</Description>
     </StyledSlide>
   );
 }

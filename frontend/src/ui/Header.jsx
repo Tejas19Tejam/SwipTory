@@ -26,6 +26,7 @@ const StyledHeaderMenu = styled.div`
 import SignUpForm from "../features/authentication/SignUpForm";
 import LoginForm from "../features/authentication/LoginForm";
 import { useAuth } from "../features/authentication/useAuth";
+import Link from "./Link";
 
 function Header() {
   const { isAuthenticated } = useAuth();
@@ -57,10 +58,10 @@ function Header() {
 
         {isAuthenticated && (
           <>
-            <Button>
+            <Link to="/bookmarks">
               <IoMdBookmark />
               <span>Bookmarks</span>
-            </Button>
+            </Link>
 
             <Modal.Open opens="story-create">
               <Button>Add Story</Button>

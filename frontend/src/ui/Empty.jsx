@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Heading from "./Heading";
 
 const StyledEmpty = styled.div`
   display: flex;
@@ -21,7 +20,6 @@ const MessageText = styled.p`
 function Empty({ category }) {
   return (
     <StyledEmpty>
-      <Heading as="h1">Top Stories About {category}</Heading>
       <img src="/empty.png" />
       <MessageText>No stories found for {category} category. </MessageText>
     </StyledEmpty>

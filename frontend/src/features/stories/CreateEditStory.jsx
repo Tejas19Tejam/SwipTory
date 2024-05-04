@@ -6,54 +6,35 @@ import CreateEditStoryForm from "./CreateEditStoryForm";
 
 // TEMP
 
-import { stories } from "../../data/data-stories";
+import { SlideProvider } from "../story-slide/SlideProvider";
+const slide1 = {
+  heading: "Explore the Beauty of Nature",
+  description: "Witness breathtaking landscapes and natural wonders.",
+  imageUrl: "https://example.com/slide1-image.jpg",
+  category: "Travel",
+};
+
+const slide2 = {
+  heading: "Healthy Living Tips",
+  description: "Learn valuable tips for maintaining a healthy lifestyle.",
+  imageUrl: "https://example.com/slide2-image.jpg",
+  category: "Health and Fitness",
+};
+
+const slide3 = {
+  heading: "The Art of Cooking",
+  description: "Discover delicious recipes and culinary techniques.",
+  imageUrl: "https://example.com/slide3-image.jpg",
+  category: "Food",
+};
 
 function CreateEditStory({ storyToEdit = {}, onCloseModal }) {
-  const [slides, setSlides] = useState(stories);
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
-  const handleActiveSlide = (slideId) => {
-    setActiveSlideIndex(slideId);
-  };
-
-  const handleRemoveSlide = (slideId) => {
-    const indexToRemove = slides.findIndex((slide) => slide.id === slideId);
-    if (indexToRemove === -1) return; // Slide not found
-
-    const newSlides = slides.filter((slide) => slide.id !== slideId);
-    setSlides(newSlides);
-
-    // If the active slide is removed, adjust the activeSlideIndex
-    if (indexToRemove === activeSlideIndex) {
-      const newIndex = Math.min(indexToRemove, newSlides.length - 1);
-      setActiveSlideIndex(newIndex);
-    } else if (activeSlideIndex > indexToRemove) {
-      setActiveSlideIndex(activeSlideIndex - 1);
-    }
-  };
-
-  const handleAddSlide = () => {
-    const newSlide = {
-      id: Math.random(), // Generate unique ID
-      story_id: 1,
-      image_url: "",
-      caption: "",
-      content: "",
-    };
-
-    setSlides((prevSlides) => [...prevSlides, newSlide]);
-  };
-
   return (
     <Row>
-      <SlideTabs
-        slides={slides}
-        activeSlideIndex={activeSlideIndex}
-        onSlideClick={handleActiveSlide}
-        onRemoveSlide={handleRemoveSlide}
-        onAddSlide={handleAddSlide}
-      />
-      <CreateEditStoryForm activeSlide={slides[activeSlideIndex]} />
+      <SlideProvider>
+        <SlideTabs />
+        <CreateEditStoryForm />
+      </SlideProvider>
     </Row>
   );
 }

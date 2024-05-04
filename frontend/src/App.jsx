@@ -7,8 +7,6 @@ import { Toaster } from "react-hot-toast";
 // Presentational Components
 import AppLayout from "./ui/AppLayout.jsx";
 import Stories from "./pages/Stories";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import Bookmarks from "./pages/Bookmarks";
 import PageNoFound from "./pages/PageNotFound";
 import { AuthProvider } from "./features/authentication/useAuth.jsx";

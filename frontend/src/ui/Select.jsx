@@ -14,7 +14,22 @@ const StyledSelect = styled.select`
   box-shadow: var(--shadow-sm);
 `;
 
-function Select({ options, value, onChange, ...props }) {
+const options = [
+  {
+    label: "Select category",
+    value: "",
+  },
+  {
+    label: "Food",
+    value: "food",
+  },
+  { label: "Health and Fitness", value: "health and fitness" },
+  { label: "Travel", value: "travel" },
+  { label: "Movies", value: "movie" },
+  { label: "Education", value: "education" },
+];
+
+function Select({ value, onChange, ...props }) {
   return (
     <StyledSelect value={value} onChange={onChange} {...props}>
       {options.map((option) => (
