@@ -51,7 +51,7 @@ function StorySlide({ slide }) {
   const { image: imageUrl, heading, description } = slide || {};
 
   return (
-    <StyledSlide img="/cover-image.webp">
+    <StyledSlide img={imageUrl}>
       <StoryTitle as="h2">{heading}</StoryTitle>
       <Description>{description}</Description>
     </StyledSlide>
