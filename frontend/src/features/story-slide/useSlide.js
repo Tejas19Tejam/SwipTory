@@ -8,7 +8,11 @@ export const useSlide = () => {
   };
 
   const addNewSlide = () => {
-    dispatch({ type: "slide/add" });
+    dispatch({ type: "slide/addOne" });
+  };
+
+  const setSlides = (slides) => {
+    dispatch({ type: "slide/setSlides", payload: { slides } });
   };
 
   const removeSlide = (indexToRemove) => {
@@ -26,5 +30,6 @@ export const useSlide = () => {
     removeSlide,
     setActiveSlide,
     activeSlideIndex,
+    setSlides,
   };
 };

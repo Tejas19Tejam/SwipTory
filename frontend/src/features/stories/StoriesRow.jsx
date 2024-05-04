@@ -24,8 +24,6 @@ function StoriesRow({ stories }) {
   const [visibleStories, setVisibleStories] = useState(4);
   const [showMore, setShowMore] = useState(false);
 
-  console.log(stories);
-
   const toggleVisibility = () => {
     setShowMore(!showMore);
     setVisibleStories(showMore ? 4 : stories.length);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Row from "../../ui/Row";
-import Category from "./Category";
+import CategoryStories from "./CategoryStories";
 import StoriesFilter from "./StoriesFilter";
 
 const StyledCategoryRow = styled(Row)`
@@ -11,7 +11,7 @@ function Categories() {
   return (
     <StyledCategoryRow>
       <StoriesFilter />
-      <Category />
+      <CategoryStories />
     </StyledCategoryRow>
   );
 }

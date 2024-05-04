@@ -1,8 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
-import { createStory } from "../../services/apiStories";
 import { useSlide } from "../story-slide/useSlide";
 import { useForm } from "react-hook-form";
+import { useCreateStory } from "./useCreateStory";
+import { useEditStory } from "./useEditStory";
 
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
@@ -10,13 +9,33 @@ import Input from "../../ui/Input";
 import Textarea from "../../ui/Textarea";
 import Select from "../../ui/Select";
 import Button from "../../ui/Button";
+import { useEffect } from "react";
 
-function CreateEditStoryForm() {
-  const queryClient = useQueryClient();
-  const { register, setValue, handleSubmit, formState } = useForm();
-  const { slides, updateSlideData, activeSlideIndex, setActiveSlide } =
-    useSlide();
+function CreateEditStoryForm({ storyToEdit }) {
+  const { createStory, isCreating } = useCreateStory();
+  const { editStory, isEditing } = useEditStory();
+  const isWorking = isCreating || isEditing;
+  const {
+    slides,
+    updateSlideData,
+    activeSlideIndex,
+    setActiveSlide,
+    setSlides,
+  } = useSlide();
+
+  const { register, setValue, handleSubmit, formState, getValues } = useForm();
   const { errors } = formState;
+
+  const { _id: editId, category } = storyToEdit;
+  const isEditSession = Boolean(editId);
+
+  // Populate form with data if in edit mode
+  useEffect(() => {
+    const isSlidesEmpty = Object.values(slides[0]).every((value) => !value);
+    if (storyToEdit.slides && isSlidesEmpty) {
+      setSlides(storyToEdit.slides);
+    }
+  }, [storyToEdit, slides, setSlides]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -25,19 +44,15 @@ function CreateEditStoryForm() {
     updateSlideData(updatedFormData);
   };
 
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createStory,
-    onSuccess: () => {
-      toast.success("New story successfully created");
-      queryClient.invalidateQueries({ queryKey: ["stories"] });
-    },
-    onError: (err) => toast.error(err.message),
-  });
-
   function onSubmit() {
-    const story = { category: slides[0].category, slides };
-    console.log(story);
-    mutate(story);
+    const category = getValues("category");
+    if (isEditSession) {
+      const story = { category: category, slides };
+      editStory({ newStory: story, id: editId });
+    } else {
+      const story = { category: category, slides };
+      createStory(story);
+    }
   }
 
   function onError(errors) {
@@ -60,7 +75,7 @@ function CreateEditStoryForm() {
         <Input
           type="text"
           id="heading"
-          disabled={false}
+          disabled={isWorking}
           placeholder="Your heading"
           {...register("heading", { required: "heading is required" })}
           onChange={handleChange}
@@ -71,7 +86,7 @@ function CreateEditStoryForm() {
         <Textarea
           type="text"
           id="description"
-          disabled={false}
+          disabled={isWorking}
           placeholder="Story Description"
           {...register("description", { required: "description is required" })}
           onChange={handleChange}
@@ -82,7 +97,7 @@ function CreateEditStoryForm() {
         <Input
           type="text"
           id="image"
-          disabled={false}
+          disabled={isWorking}
           placeholder="Add Image url"
           {...register(
             "image",
@@ -98,7 +113,8 @@ function CreateEditStoryForm() {
           id="category"
           {...register("category", { required: "category is required" })}
           onChange={handleChange}
-          value={slides[0].category}
+          defaultValue={editId && category}
+          disabled={isWorking}
         />
       </FormRow>
       <FormRow>
@@ -112,7 +128,7 @@ function CreateEditStoryForm() {
         </div>
         <div>
           <Button disabled={false} type="submit">
-            Post
+            {isEditSession ? "Update Story" : "Post"}
           </Button>
         </div>
       </FormRow>

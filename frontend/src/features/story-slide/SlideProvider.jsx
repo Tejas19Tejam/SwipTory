@@ -6,7 +6,7 @@ const initialState = {
     {
       heading: "",
       description: "",
-      imageUrl: "",
+      image: "",
       category: "",
     },
     {
@@ -31,6 +31,8 @@ const SlideContext = createContext();
 // Reducer
 const slideReducer = (state, action) => {
   switch (action.type) {
+    case "slide/setSlides":
+      return { ...state, slides: [...action.payload.slides] };
     case "slide/update":
       const { formData } = action.payload;
       const updatedSlides = state.slides.map((slide, index) =>
@@ -40,7 +42,7 @@ const slideReducer = (state, action) => {
         ...state,
         slides: updatedSlides,
       };
-    case "slide/add":
+    case "slide/addOne":
       return {
         ...state,
         slides: [...state.slides, initialState.slides[0]],

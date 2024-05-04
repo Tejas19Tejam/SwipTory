@@ -31,6 +31,7 @@ import Link from "./Link";
 function Header() {
   const { isAuthenticated } = useAuth();
   console.log(isAuthenticated);
+
   return (
     <StyledHeader>
       <AppLogo />

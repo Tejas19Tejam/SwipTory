@@ -6,6 +6,7 @@ import { useOutsideClick } from "../hooks/useOutsideClick";
 import Avatar from "./Avatar";
 import Button from "./Button";
 import { useLogout } from "../features/authentication/useLogout";
+import { useAuth } from "../features/authentication/useAuth";
 
 const StyledUserAvatar = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ const LogoutWindow = styled.div`
 
 function UserAvatar() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
   const [position, setPosition] = useState(null);
   const ref = useOutsideClick(() => setOpen(false));
   const { logout } = useLogout();
@@ -72,7 +74,7 @@ function UserAvatar() {
       </HamburgerMenu>
       {open && (
         <LogoutWindow position={position} ref={ref}>
-          <p>Vasudev</p>
+          <p>{user?.username}</p>
           <Button onClick={logout}>Logout</Button>
         </LogoutWindow>
       )}

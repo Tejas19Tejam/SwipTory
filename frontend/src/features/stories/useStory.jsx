@@ -11,7 +11,6 @@ export const StoryProvider = ({ children, story }) => {
   async function handleBookmark() {
     // 1. Bookmark the story
     const { bookmarked } = await bookmarkStory(id);
-    console.log(bookmarked);
 
     queryClient.invalidateQueries({
       queryKey: ["stories"],
@@ -21,7 +20,6 @@ export const StoryProvider = ({ children, story }) => {
   async function handleLike() {
     // 1. Like the story
     const { liked } = await likeStory(id);
-    console.log(liked);
 
     queryClient.invalidateQueries({
       queryKey: ["stories"],

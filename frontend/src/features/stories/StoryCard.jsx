@@ -46,7 +46,7 @@ function StoryCard({ story, onClick }) {
       <Modal.Window name={storyId}>
         <StoryView story={story} />
       </Modal.Window>
-      {isEditable && <EditStoryButton />}
+      {isEditable && <EditStoryButton storyToEdit={story} />}
     </StoryLayout>
   );
 }

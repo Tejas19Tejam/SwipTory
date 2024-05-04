@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getStories } from "../../services/apiStories";
 import { useSearchParams } from "react-router-dom";
 import { useAuth } from "../authentication/useAuth";
@@ -8,7 +8,7 @@ export function useStories() {
   const [searchParams] = useSearchParams();
   const { isAuthenticated } = useAuth();
   // Logic to include editable stories in "About you" category
-  const [filteredStories, setFilteredStories] = useState([]);
+  const [userStories, setUserStories] = useState([]);
 
   // FILTER
   const filterValue = searchParams.get("category") || "all";
@@ -23,28 +23,19 @@ export function useStories() {
     data: { result: stories } = {},
     error,
   } = useQuery({
-    queryKey: ["stories", filterValue],
+    queryKey: ["stories", filterValue, isAuthenticated],
     queryFn: () => getStories(filter),
   });
 
   useEffect(() => {
     if (isLoading || !stories) return;
-
-    let updatedStories = [...stories];
-
     if (filterValue === "all" && isAuthenticated) {
-      const aboutYouStories = stories.filter((story) => story.isEditable);
-      updatedStories = [
-        ...aboutYouStories.map((story) => ({
-          ...story,
-          category: "About you",
-        })),
-        ...stories,
-      ];
+      const userStories = stories.filter((story) => story.isEditable);
+      setUserStories(userStories);
+    } else {
+      setUserStories([]);
     }
-
-    setFilteredStories(updatedStories);
   }, [isLoading, stories, filterValue, isAuthenticated]);
 
-  return { isLoading, error, stories: filteredStories };
+  return { isLoading, error, stories, userStories };
 }

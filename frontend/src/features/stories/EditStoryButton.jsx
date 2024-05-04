@@ -4,10 +4,6 @@ import { FaEdit } from "react-icons/fa";
 import Modal from "../../ui/Modal";
 import CreateEditStory from "./CreateEditStory";
 
-// const EditButtonWrapper = styled.div`
-//   position: relative;
-// `;
-
 const EditButton = styled(Button)`
   position: absolute;
   display: flex;
@@ -21,7 +17,7 @@ const EditButton = styled(Button)`
   }
 `;
 
-function EditStoryButton({ onClick }) {
+function EditStoryButton({ onClick, storyToEdit }) {
   return (
     <Modal>
       <Modal.Open opens="story-edit">
@@ -31,7 +27,7 @@ function EditStoryButton({ onClick }) {
         </EditButton>
       </Modal.Open>
       <Modal.Window name="story-edit" hasBackground={true}>
-        <CreateEditStory />
+        <CreateEditStory storyToEdit={storyToEdit} />
       </Modal.Window>
     </Modal>
   );
