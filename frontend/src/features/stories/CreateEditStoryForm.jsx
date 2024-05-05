@@ -25,11 +25,12 @@ function CreateEditStoryForm({ storyToEdit }) {
 
   const { register, setValue, handleSubmit, formState, getValues } = useForm();
   const { errors } = formState;
+  const formCategory = getValues("category");
 
   const { _id: editId, category } = storyToEdit;
   const isEditSession = Boolean(editId);
 
-  // Populate form with data if in edit mode
+  // Logic to pre-filled data while editing session
   useEffect(() => {
     const isSlidesEmpty = Object.values(slides[0]).every((value) => !value);
     if (storyToEdit.slides && isSlidesEmpty) {
@@ -45,12 +46,11 @@ function CreateEditStoryForm({ storyToEdit }) {
   };
 
   function onSubmit() {
-    const category = getValues("category");
     if (isEditSession) {
-      const story = { category: category, slides };
+      const story = { category: formCategory, slides };
       editStory({ newStory: story, id: editId });
     } else {
-      const story = { category: category, slides };
+      const story = { category: formCategory, slides };
       createStory(story);
     }
   }
@@ -113,16 +113,24 @@ function CreateEditStoryForm({ storyToEdit }) {
           id="category"
           {...register("category", { required: "category is required" })}
           onChange={handleChange}
-          defaultValue={editId && category}
           disabled={isWorking}
+          value={formCategory ? formCategory : editId && category}
         />
       </FormRow>
       <FormRow>
         <div>
-          <Button variation="secondary" type="reset" onClick={handleSelectPrev}>
+          <Button
+            variation="secondary"
+            type="button"
+            onClick={handleSelectPrev}
+          >
             Previous
           </Button>
-          <Button variation="secondary" onClick={handleSelectNext} type="reset">
+          <Button
+            variation="secondary"
+            onClick={handleSelectNext}
+            type="button"
+          >
             Next
           </Button>
         </div>
