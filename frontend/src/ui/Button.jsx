@@ -58,7 +58,6 @@ const Button = styled.button`
   letter-spacing: 0.6px;
 
   ${(props) => sizes[props.size]}
-  ${(props) => variations[props.variation]}
   ${(props) => colors[props.color]}
 
 
