@@ -123,6 +123,7 @@ function CreateEditStoryForm({ storyToEdit }) {
             variation="secondary"
             type="button"
             onClick={handleSelectPrev}
+            color="green"
           >
             Previous
           </Button>
@@ -130,6 +131,7 @@ function CreateEditStoryForm({ storyToEdit }) {
             variation="secondary"
             onClick={handleSelectNext}
             type="button"
+            color="blue"
           >
             Next
           </Button>

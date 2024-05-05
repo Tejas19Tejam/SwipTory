@@ -21,7 +21,7 @@ function EditStoryButton({ onClick, storyToEdit }) {
   return (
     <Modal>
       <Modal.Open opens="story-edit">
-        <EditButton size="medium" variation="secondary" onClick={onClick}>
+        <EditButton size="medium" color="plain" onClick={onClick}>
           <FaEdit />
           Edit
         </EditButton>

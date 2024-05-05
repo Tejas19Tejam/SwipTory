@@ -65,7 +65,7 @@ function Header() {
             </Link>
 
             <Modal.Open opens="story-create">
-              <Button>Add Story</Button>
+              <Button background="red">Add Story</Button>
             </Modal.Open>
             <Modal.Window
               name="story-create"
